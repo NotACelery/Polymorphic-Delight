@@ -1,0 +1,120 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+    id 'net.neoforged.moddev' version '2.0.62-beta'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    maven {
+        name = 'Curse Maven'
+        url = uri('https://cursemaven.com')
+        content {
+            includeGroup('curse.maven')
+        }
+    }
+}
+
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.INFO
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+dependencies {
+    implementation "curse.maven:farmers-delight-398521:${project.farmers_delight_curse_file}"
+
+    if ((project.findProperty('polymorph_flavor') ?: 'original') == 'plus') {
+        implementation "curse.maven:polymorph-plus-1586874:${project.polymorph_plus_curse_file}"
+    } else {
+        implementation "curse.maven:polymorph-388800:${project.polymorph_curse_file}"
+    }
+}
+
+def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    def replaceProperties = [
+            minecraft_version             : minecraft_version,
+            minecraft_version_range       : minecraft_version_range,
+            neo_version                   : neo_version,
+            neo_version_range             : neo_version_range,
+            loader_version_range          : loader_version_range,
+            mod_id                        : mod_id,
+            mod_name                      : mod_name,
+            mod_license                   : mod_license,
+            mod_version                   : mod_version,
+            mod_authors                   : mod_authors,
+            mod_description               : mod_description,
+            farmers_delight_version_range : farmers_delight_version_range,
+            polymorph_version_range       : polymorph_version_range,
+            polymorph_plus_version_range  : polymorph_plus_version_range
+    ]
+
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'    : mod_name,
+                'Specification-Vendor'   : mod_authors,
+                'Specification-Version'  : '1',
+                'Implementation-Title'   : project.name,
+                'Implementation-Version' : archiveVersion,
+                'Implementation-Vendor'  : mod_authors
+        ])
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

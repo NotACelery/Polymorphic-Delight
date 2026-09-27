@@ -1,0 +1,6 @@
+{
+  "message.polymorphic_delight.point_at_food": "Polymorph: apunta a una comida para cambiar solo ese espacio.",
+  "message.polymorphic_delight.selection": "Polymorph: %1$s [%2$s/%3$s]",
+  "message.polymorphic_delight.selection_bulk": "Polymorph: %1$s [%2$s/%3$s] · %4$s espacios",
+  "message.polymorphic_delight.unknown_output": "Resultado desconocido"
+}
