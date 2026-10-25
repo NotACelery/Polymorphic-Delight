@@ -1,0 +1,5 @@
+{
+  "message.polymorphic_delight.selection": "Selected: %s [%s/%s]",
+  "message.polymorphic_delight.selection_bulk": "Selected: %s [%s/%s] in %s slots",
+  "message.polymorphic_delight.point_at_food": "Point directly at the item to select its recipe"
+}
