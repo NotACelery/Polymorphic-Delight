@@ -3,6 +3,7 @@
   "id": "polymorphic_delight",
   "version": "${version}",
   "name": "Polymorphic Delight",
+  "icon": "polymorphed_delight.png",
   "description": "Recipe selection for Farmer's Delight Cooking Pots, Cutting Boards, Skillets, Campfires and Stoves.",
   "authors": [
     "Celerbi"
