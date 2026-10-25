@@ -41,6 +41,11 @@ When targeting multiple food items, the selection is kept independently for each
 
 Compatible addon Stoves are supported through `AbstractStoveBlockEntity`. Other custom cooking devices with different block entities or recipe systems may need additional integration.
 
+## Technical documentation
+
+- [Compatibility and requirements](docs/COMPATIBILITY.md)
+- [Implementation notes](docs/IMPLEMENTATION.md)
+
 ## Building
 
 Java 21 is required.
