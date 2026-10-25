@@ -61,11 +61,7 @@ neoForge {
 dependencies {
     implementation "curse.maven:farmers-delight-398521:${project.farmers_delight_curse_file}"
 
-    if ((project.findProperty('polymorph_flavor') ?: 'original') == 'plus') {
-        implementation "curse.maven:polymorph-plus-1586874:${project.polymorph_plus_curse_file}"
-    } else {
-        implementation "curse.maven:polymorph-388800:${project.polymorph_curse_file}"
-    }
+    implementation "curse.maven:polymorph-388800:${project.polymorph_curse_file}"
 }
 
 def generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
@@ -117,4 +113,8 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
+}
+
+tasks.named('jar', Jar) {
+    archiveFileName = "${project.mod_id}-${project.mod_version}-neoforge-${project.minecraft_version}.jar"
 }

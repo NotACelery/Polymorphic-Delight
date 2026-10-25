@@ -35,21 +35,21 @@ Stoves based on Farmer's Delight `AbstractStoveBlockEntity` inherit support auto
 
 Vanilla Campfires and Soul Campfires are supported. Custom cooking blocks with their own unrelated block entity or recipe system need dedicated integration.
 
-More details are in [Compatibility](docs/COMPATIBILITY.md).
+The handheld Skillet is not covered; only the placed Skillet is supported. Normal crafting-table recipe conflicts are handled by Polymorph itself.
+
+When targeting multiple food items, the selection is kept independently for each occupied slot. A changed or emptied slot does not inherit an earlier recipe selection, and switching recipes preserves cooking progress proportionally.
+
+Compatible addon Stoves are supported through `AbstractStoveBlockEntity`. Other custom cooking devices with different block entities or recipe systems may need additional integration.
 
 ## Building
 
 Java 21 is required.
 
-On Windows, `build.bat` can build against either Polymorph implementation:
+On Windows, run `build.bat`. The project compiles once against Polymorph's API and produces **one JAR compatible with Polymorph or Polymorph+**. No provider-specific variants are built.
 
-```text
-build.bat original
-build.bat plus
-build.bat all
-```
+Output: `dist/polymorphic_delight-1.0.0-neoforge-1.21.1.jar`. The build requires JDK 21 and downloads Gradle when necessary.
 
-A normal Gradle build also works when the required dependencies are available.
+The Gradle source project can also be built directly with `gradle build` using JDK 21.
 
 ## Credits
 

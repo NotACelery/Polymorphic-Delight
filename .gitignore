@@ -1,7 +1,10 @@
-.gradle/
-.gradle-dist/
-build/
-run/
-.idea/
+/.gradle/
+/.gradle-bin/
+/.gradle-dist/
+/.jdk-bin/
+/build/
+/build-logs/
+/dist/
+/run/
+/.idea/
 *.iml
-verified-builds/
