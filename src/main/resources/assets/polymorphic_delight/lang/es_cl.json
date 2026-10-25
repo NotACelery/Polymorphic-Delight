@@ -1,0 +1,5 @@
+{
+  "message.polymorphic_delight.selection": "Seleccionado: %s [%s/%s]",
+  "message.polymorphic_delight.selection_bulk": "Seleccionado: %s [%s/%s] en %s espacios",
+  "message.polymorphic_delight.point_at_food": "Apunta directamente al alimento para elegir su receta"
+}

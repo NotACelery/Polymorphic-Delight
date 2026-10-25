@@ -1,0 +1,46 @@
+plugins {
+    id 'fabric-loom' version '1.16.3'
+}
+
+version = project.mod_version
+group = 'dev.celerbi.polymorphicdelight'
+base {
+    archivesName = 'polymorphic_delight'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.21.1'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.19.5'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.116.6+1.21.1'
+    modImplementation files('libs/FarmersDelight-1.21.1-3.3.6+refabricated.jar')
+    modImplementation files('libs/polymorph-fabric-1.1.0+1.21.1.jar')
+    modCompileOnly files('libs/cardinal-components-base-6.1.0.jar', 'libs/cardinal-components-block-6.1.0.jar')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.named('jar', Jar) {
+    archiveFileName = "polymorphic_delight-${project.mod_version}-dev.jar"
+}
+
+tasks.named('remapJar') {
+    archiveFileName = "polymorphic_delight-${project.mod_version}-fabric-1.21.1.jar"
+}

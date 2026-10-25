@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.celerbi.polymorphicdelight.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CookingPotBlockEntityMixin",
+    "CuttingBoardBlockEntityMixin",
+    "SkilletBlockEntityMixin",
+    "CampfireBlockEntityMixin",
+    "AbstractStoveBlockEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

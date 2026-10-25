@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "polymorphic_delight",
+  "version": "${version}",
+  "name": "Polymorphic Delight",
+  "description": "Recipe selection for Farmer's Delight Cooking Pots, Cutting Boards, Skillets, Campfires and Stoves.",
+  "authors": [
+    "Celerbi"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.celerbi.polymorphicdelight.PolymorphicDelight"
+    ],
+    "client": [
+      "dev.celerbi.polymorphicdelight.client.PolymorphicDelightClient"
+    ],
+    "cardinal-components": [
+      "dev.celerbi.polymorphicdelight.compat.PolymorphBlockComponents"
+    ]
+  },
+  "mixins": [
+    "polymorphic_delight.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": ">=0.116.6",
+    "farmersdelight": "*",
+    "polymorph": "*"
+  }
+}

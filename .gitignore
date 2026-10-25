@@ -1,0 +1,9 @@
+/.gradle/
+/.gradle-bin/
+/.jdk-bin/
+/build/
+/build-logs/
+/dist/
+/run/
+/.idea/
+*.iml
