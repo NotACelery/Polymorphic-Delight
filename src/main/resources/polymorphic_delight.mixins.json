@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.celerbi.polymorphicdelight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "polymorphic_delight.refmap.json",
+  "mixins": [
+    "AbstractStoveBlockEntityMixin",
+    "CampfireBlockEntityMixin",
+    "CookingPotBlockEntityMixin",
+    "CuttingBoardBlockEntityMixin",
+    "SkilletBlockEntityMixin"
+  ],
+  "injectors": { "defaultRequire": 1 }
+}

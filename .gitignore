@@ -1,0 +1,16 @@
+.gradle/
+.gradle-dist/
+.jdk17/
+.idea/
+.vscode/
+build/
+out/
+run/
+verified-builds/
+build-logs/
+dist/
+*.iml
+*.tmp
+*.bak
+hs_err_pid*.log
+replay_pid*.log
