@@ -1,0 +1,47 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version '1.16.3'
+}
+
+version = project.mod_version
+group = 'dev.celerbi.polymorphicdelight'
+base {
+    archivesName = 'polymorphic_delight'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    implementation files('libs/FarmersDelight-26.3-3.6.30+refabricated.jar')
+    implementation files('libs/polymorph_plus-fabric-1.5.0+26.3.0.jar')
+    compileOnly fileTree(dir: 'libs', includes: ['cardinal-components-base-*.jar', 'cardinal-components-block-*.jar'])
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft_required', project.minecraft_required
+    filesMatching('fabric.mod.json') {
+        expand version: project.version, minecraft_required: project.minecraft_required
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 25
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
+}
+
+tasks.named('jar', Jar) {
+    from('LICENSE') {
+        rename { "LICENSE_${project.base.archivesName.get()}" }
+    }
+    archiveFileName = "polymorphic_delight-${project.mod_version}.jar"
+}
