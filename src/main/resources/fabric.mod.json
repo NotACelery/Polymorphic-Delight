@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "polymorphic_delight",
+  "version": "${version}",
+  "name": "Polymorphic Delight",
+  "description": "Resolve conflicting Farmer's Delight recipes in Cooking Pots, Cutting Boards, Skillets, Campfires and Stoves, with in-world indicators, individual Stove selections and a global selector.",
+  "authors": [
+    "Celerbi"
+  ],
+  "license": "MIT",
+  "icon": "polymorphed_delight.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.celerbi.polymorphicdelight.PolymorphicDelight"
+    ],
+    "client": [
+      "dev.celerbi.polymorphicdelight.client.PolymorphicDelightClient"
+    ],
+    "cardinal-components": [
+      "dev.celerbi.polymorphicdelight.compat.PolymorphBlockComponents"
+    ]
+  },
+  "mixins": [
+    "polymorphic_delight.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "${minecraft_required}",
+    "java": ">=25",
+    "fabric-api": "*",
+    "farmersdelight": "*",
+    "polymorph_plus": "*"
+  }
+}
